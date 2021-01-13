@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.huadi.mapper.AccountMapper">
+<!--    登录验证-->
+    <select id="validateUser" parameterType="Account"  resultType="Account">
+              select * from user where  user_id= #{user_id} and user_ps = #{user_ps}
+       </select>
+
+<!--    注册是否合法-->
+    <select id="isRegisterValid" parameterType="java.lang.Integer"  resultType="Account">
+              select * from user where  user_id= #{user_id}
+       </select>
+
+
+    <insert id="registerUser"  parameterType="Account" >
+           insert into user (user_id,user_ps) values (#{user_id},#{user_ps})
+       </insert>
+
+</mapper>
